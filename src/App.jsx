@@ -1,9 +1,15 @@
 import React from "react";
-import { useFetchPostsQuery } from "./features/posts/postsApiSlice";
+import {
+  useFetchPostsQuery,
+  useFetchSinglePostQuery,
+} from "./features/posts/postsApiSlice";
 
 function App() {
-  const { data, isFetching } = useFetchPostsQuery();
-  console.log(data);
+  const { data: posts, isFetching } = useFetchPostsQuery();
+  const { data: singlePost } = useFetchSinglePostQuery(3);
+
+  console.table(posts);
+  console.table(singlePost)
   return <div>App</div>;
 }
 

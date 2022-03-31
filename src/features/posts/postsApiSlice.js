@@ -8,12 +8,13 @@ export const postsApiSlice = createApi({
   endpoints(builder) {
     return {
       fetchPosts: builder.query({
-        query() {
-          return `read.php`;
-        },
+        query: () => "/read.php",
+      }),
+      fetchSinglePost: builder.query({
+        query: (postId) => `/read_single.php?id=${postId}`,
       }),
     };
   },
 });
 
-export const {useFetchPostsQuery} = postsApiSlice;
+export const { useFetchPostsQuery, useFetchSinglePostQuery } = postsApiSlice;
