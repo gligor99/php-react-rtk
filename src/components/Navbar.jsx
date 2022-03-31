@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to={"/"}>
-          PHP RestAPI - Test with React
+          RTK Query - Practice
         </Link>
         <button
           className="navbar-toggler"

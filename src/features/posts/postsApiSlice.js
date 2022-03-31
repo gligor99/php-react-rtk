@@ -13,7 +13,7 @@ export const postsApiSlice = createApi({
         providesTags: ["Post"],
       }),
       fetchSinglePost: builder.query({
-        query: (postId) => `/reads_single.php?id=${postId}`,
+        query: (postId) => `/read_single.php?id=${postId}`,
       }),
       addNewPost: builder.mutation({
         query: (initialPost) => ({
@@ -21,6 +21,14 @@ export const postsApiSlice = createApi({
           method: "POST",
           // We need to include entire post object as the body of the request
           body: initialPost,
+        }),
+        invalidatesTags: ["Post"],
+      }),
+      editPost: builder.mutation({
+        query: (post) => ({
+          url: `/update.php`,
+          method: "PUT",
+          body: post,
         }),
         invalidatesTags: ["Post"],
       }),
@@ -32,4 +40,5 @@ export const {
   useFetchPostsQuery,
   useFetchSinglePostQuery,
   useAddNewPostMutation,
+  useEditPostMutation,
 } = postsApiSlice;
