@@ -48,14 +48,19 @@ const Posts = () => {
                       0,
                       150
                     )}...`}</p>
-                    {/* Link goes here */}
+                    <Link
+                      className="btn btn-warning me-3"
+                      to={`post/${item.id}/read`}
+                    >
+                      Read Post
+                    </Link>
                     <button type="submit" className="btn btn-danger">
                       Delete
                     </button>
                   </div>
                   <div className="card-footer text-muted d-flex justify-content-between">
                     <span>Category: {item.category_name}</span>
-                    {/* Link goes here */}
+                    <Link to={`post/${item.id}/edit`}>Edit</Link>
                   </div>
                 </div>
               </div>

@@ -11,7 +11,7 @@ export const postsApiSlice = createApi({
         query: () => "/read.php",
       }),
       fetchSinglePost: builder.query({
-        query: (postId) => `/read_single.php?id=${postId}`,
+        query: (postId) => `/reads_single.php?id=${postId}`,
       }),
     };
   },

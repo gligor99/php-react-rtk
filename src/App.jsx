@@ -8,9 +8,6 @@ import Navbar from "./components/Navbar";
 import { useFetchSinglePostQuery } from "./features/posts/postsApiSlice";
 
 function App() {
-  const { data } = useFetchSinglePostQuery(4);
-  console.table(data);
-
   return (
     <BrowserRouter>
       <Navbar />
