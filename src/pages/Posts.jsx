@@ -5,9 +5,6 @@ import { useFetchPostsQuery } from "../features/posts/postsApiSlice";
 const Posts = () => {
   const { data, isLoading, isError, error } = useFetchPostsQuery();
 
-  console.log(data);
-  console.log(error);
-
   if (isLoading) {
     return (
       <div className="container p-3">
@@ -37,7 +34,6 @@ const Posts = () => {
   return (
     <>
       {data?.map((item) => {
-        console.log(item);
         return (
           <div className="container p-3" key={item.id}>
             <div className="row">
