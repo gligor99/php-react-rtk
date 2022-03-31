@@ -10,7 +10,10 @@ export const postsApiSlice = createApi({
     return {
       fetchPosts: builder.query({
         query: () => "/read.php",
-        providesTags: ["Post"],
+        providesTags: (result = [], error, arg) => [
+          "Post",
+          ...result.map(({ id }) => ({ type: "Post", id })),
+        ],
       }),
       fetchSinglePost: builder.query({
         query: (postId) => `/read_single.php?id=${postId}`,
@@ -30,7 +33,7 @@ export const postsApiSlice = createApi({
           method: "PUT",
           body: post,
         }),
-        invalidatesTags: ["Post"],
+        invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
       }),
     };
   },

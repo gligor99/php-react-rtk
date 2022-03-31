@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index exact element={<Posts />} />
         <Route path="post/create" element={<CreatePost />} />
-        <Route path="post/:postId/edit" element={<UpdatePost />} />
+        <Route path="post/:id/edit" element={<UpdatePost />} />
         <Route path="post/:id/read" element={<ReadSinglePost />} />
       </Routes>
     </BrowserRouter>

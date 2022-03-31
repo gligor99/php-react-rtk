@@ -4,7 +4,7 @@ import { useEditPostMutation } from "../features/posts/postsApiSlice";
 
 const UpdatePost = () => {
   const [inputs, setInputs] = useState([]);
-  const { postId } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [updatePost, { isLoading }] = useEditPostMutation();
@@ -12,20 +12,18 @@ const UpdatePost = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value, postId }));
+    setInputs((values) => ({ ...values, [name]: value, id }));
   };
 
   const savePost = async () => {
-    if (inputs) {
-      await updatePost(inputs);
-      navigate("/");
-    }
+    await updatePost(inputs);
+    navigate("/");
   };
 
   return (
     <>
       <div className="p-5 bg-secondary text-center h2 text-white">
-        <span>Update Post: {postId}</span>
+        <span>Update Post: {id}</span>
       </div>
       <div className="container">
         <div className="row">
@@ -68,12 +66,13 @@ const UpdatePost = () => {
                 hidden
                 type="number"
                 name="id"
-                defaultValue={postId}
+                defaultValue={id}
                 aria-label="default input example"
               />
               <button
                 className="btn btn-primary form-control"
                 onClick={savePost}
+                disabled={isLoading}
               >
                 Update post
               </button>
